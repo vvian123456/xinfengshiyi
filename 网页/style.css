@@ -1,0 +1,234 @@
+/* style.css */
+/* 复古配色方案 */
+:root {
+    --vintage-red: #6b1118;  /* 深胭脂红 */
+    --indigo-blue: #003b4d;  /* 靛青色 */
+    --accent-gold: #c5a47e;  /* 点缀金色 */
+    --text-light: #f0f0f0;   /* 浅灰文字 */
+}
+
+/* 基础重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面基础样式 */
+body {
+    font-family: 'Noto Serif SC', '微软雅黑', serif;
+    padding: 40px 20px;
+    background: radial-gradient(
+        circle at 50% 10%,
+        var(--vintage-red),
+        var(--indigo-blue)
+    );
+    line-height: 1.7;
+    color: var(--text-light);
+    min-height: 100vh;
+}
+
+/* 标题容器 */
+.page-header {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--accent-gold);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.page-header:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* 主标题样式 */
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    letter-spacing: 3px;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: var(--accent-gold);
+    transition: width 0.3s ease;
+}
+
+.page-header:hover h1::after {
+    width: 160px;
+}
+
+/* 排行榜容器 */
+.ranking-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* 景区条目 */
+.item {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 图片样式 */
+img {
+    width: 350px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 25px;
+    float: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--accent-gold);
+}
+
+img:hover {
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 文字信息 */
+.info {
+    overflow: hidden;
+    padding: 15px;
+}
+
+h3 {
+    color: var(--vintage-red);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(139, 0, 0, 0.1);
+    padding-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+p {
+    color: #555;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    img {
+        width: 100%;
+        height: 200px;
+        margin-right: 0;
+        margin-bottom: 20px;
+        float: none;
+    }
+
+    .page-header {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+    
+    .item {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+    
+    h1::after {
+        width: 80px;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .item {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    img {
+        border-color: #ccc !important;
+    }
+}
+
+/* style.css */
+/* 在原有CSS基础上新增： */
+
+/* 标题链接样式 */
+.title-link {
+    display: inline-block; /* 保持标题原有布局 */
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.title-link:hover h3 {
+    color: #8b0000;
+    transform: translateX(5px);
+}
+
+/* 修复布局问题 */
+.item {
+    /* 确保保留原有布局属性 */
+    clear: both;
+    overflow: hidden;
+}
+
+img {
+    float: left;
+    margin-right: 25px;
+}
+
+.info {
+    overflow: hidden;
+}
+
+/* 移动端适配优化 */
+@media (max-width: 768px) {
+    img {
+        float: none;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
